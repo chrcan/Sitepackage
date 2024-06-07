@@ -1,5 +1,5 @@
 {
-	"name": "rcdesign/sitepackage",
+	"name": "rcdesign/rcdesign",
 	"type": "typo3-cms-extension",
 	"description": "Sitepackage for TYPO3 13",
 	"license": "GPL-2.0-or-later",
