@@ -16,6 +16,15 @@
 		"TYPO3 CMS",
 		"Rcdesign"
 	],
+	"support": {
+		"issues": "https://github.com/vendorname/my-extensions/issues"
+	},
+	"funding": [
+		{
+			"type": "other",
+			"url:": "myfundpage.org/vendorname"
+		}
+	],
 	"homepage": "https://typo3.org",
 	"require-dev": {
 		"roave/security-advisories": "dev-latest",
