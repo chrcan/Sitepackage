@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+
 /*
  * Copyright (C) 2023 rc design visual concepts (rc-design.at)
  *
@@ -23,76 +25,10 @@ declare(strict_types=1);
 
 defined('TYPO3') or die();
 
-\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\B13\Container\Tca\Registry::class)->configureContainer(
-    (
-        new \B13\Container\Tca\ContainerConfiguration(
-            '2Spalten', // CType
-            '2 Spalten', // label
-            '50% / 50%', // description
-            [
-                [
-                    ['name' => 'Linke Spalte', 'colPos' => 201, 'disallowed' => ['CType' => '2cols, 3cols']],
-                    ['name' => 'Rechte Spalte', 'colPos' => 202, 'disallowed' => ['CType' => '2cols, 3cols']],
-                ],
-            ] // grid configuration
-        )
-    )
-        // override default configurations
-        ->setIcon('EXT:container/Resources/Public/Icons/container-2col.svg')
-        ->setSaveAndCloseInNewContentElementWizard(true)
-);
-// override default settings
-$GLOBALS['TCA']['tt_content']['types']['2colsU']['showitem'] = 'sys_language_uid,CType,header,header_layout,layout,colPos,tx_container_parent';
-
-\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\B13\Container\Tca\Registry::class)->configureContainer(
-    (
-        new \B13\Container\Tca\ContainerConfiguration(
-            '3Spalten', // CType
-            '3 Spalten', // label
-            '33% / 33% / 33%', // description
-            [
-                [
-                    ['name' => 'Linke Spalte', 'colPos' => 301, 'disallowed' => ['CType' => '2cols, 2colsU, 2cols84, 3cols']],
-                    ['name' => 'Mittlere Spalte', 'colPos' => 302, 'disallowed' => ['CType' => '2cols, 3cols']],
-                    ['name' => 'Rechte Spalte', 'colPos' => 303, 'disallowed' => ['CType' => '2cols, 3cols']],
-                ],
-            ] // grid configuration
-        )
-    )
-        // override default configurations
-        ->setIcon('EXT:container/Resources/Public/Icons/container-3col.svg')
-        ->setSaveAndCloseInNewContentElementWizard(true)
-);
-// override default settings
-$GLOBALS['TCA']['tt_content']['types']['3cols']['showitem'] = 'sys_language_uid,CType,header,header_layout,layout,colPos,tx_container_parent';
-
-\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\B13\Container\Tca\Registry::class)->configureContainer(
-    (
-        new \B13\Container\Tca\ContainerConfiguration(
-            '4Spalten', // CType
-            '4 Spalten', // label
-            '33% / 33% / 33% / 33%', // description
-            [
-                [
-                    ['name' => 'Linke Spalte', 'colPos' => 401, 'disallowed' => ['CType' => '2cols, 3cols, 4cols']],
-                    ['name' => 'Linke Mittlere Spalte', 'colPos' => 402, 'disallowed' => ['CType' => '2cols, 3cols, 4cols']],
-                    ['name' => 'Rechte Mittlere Spalte', 'colPos' => 403, 'disallowed' => ['CType' => '2cols, 3cols, 4cols']],
-                    ['name' => 'Rechte Spalte', 'colPos' => 404, 'disallowed' => ['CType' => '2cols, 3cols, 4cols']],
-                ],
-            ] // grid configuration
-        )
-    )
-        // override default configurations
-        ->setIcon('EXT:container/Resources/Public/Icons/container-4col.svg')
-        ->setSaveAndCloseInNewContentElementWizard(true)
-);
-// override default settings
-$GLOBALS['TCA']['tt_content']['types']['4cols']['showitem'] = 'sys_language_uid,CType,header,header_layout,layout,colPos,tx_container_parent';
-
 // Eigenes CType erstellen
 
 // Adds the content element to the "Type" dropdown
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTcaSelectItem(
+ExtensionManagementUtility::addTcaSelectItem(
     'tt_content',
     'CType',
     [
@@ -142,7 +78,7 @@ $GLOBALS['TCA']['tt_content']['types']['rcdesign9_erstescustomelement'] = [
     ],
 ];
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns(
+ExtensionManagementUtility::addTCAcolumns(
     'tt_content',
     [
         'row_items' => [
@@ -174,7 +110,7 @@ $GLOBALS['TCA']['tt_content']['types']['rcdesign9_erstescustomelement'] = [
 
 /// Neues CE Element Card mit Inline Funktion
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTcaSelectItem(
+ExtensionManagementUtility::addTcaSelectItem(
     'tt_content',
     'CType',
     [
@@ -266,7 +202,7 @@ $GLOBALS['TCA']['tt_content']['columns'] = array_replace_recursive(
 
 /// Neues CE Element Accordion mit Inline Funktion
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTcaSelectItem(
+ExtensionManagementUtility::addTcaSelectItem(
     'tt_content',
     'CType',
     [
