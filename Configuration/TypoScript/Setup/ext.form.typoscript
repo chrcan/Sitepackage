@@ -1,0 +1,2 @@
+plugin.tx_form.settings.yamlConfigurations.100 = EXT:rcdesign/Configuration/Form/rcdesign9Setup.yaml
+module.tx_form.settings.yamlConfigurations.100 = EXT:rcdesign/Configuration/Form/rcdesign9Setup.yaml

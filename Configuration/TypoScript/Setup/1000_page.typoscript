@@ -1,0 +1,253 @@
+page = PAGE
+
+## Meta Tags
+page.meta {
+    viewport = width=device-width, initial-scale=1, shrink-to-fit=no
+    #google-site-verification=
+    robots = INDEX,FOLLOW
+    description {
+        data = TSFE:page|description
+        ifEmpty (
+        Hier kommt die Beschreibung rein
+        )
+    }
+    keywords {
+        data = TSFE:page|keywords
+        keywords = 1
+        ifEmpty (
+        keywords, keywords....
+        )
+    }
+    X-UA-Compatible.httpEquivalent = 1
+}
+## Fav Icon
+page.shortcutIcon = EXT:rcdesign/Resources/Public/Icons/favicon/favicon.ico
+
+## CSS Datei einbinden
+page.includeCSS {
+  #10 = EXT:rcdesign/Resources/Public/StyleSheeds/grid.css
+  #10.disableCompression = 1
+  10 = EXT:rcdesign/Resources/Public/css/bootstrap.min.css
+  #10 = EXT:rcdesign/Resources/Public/Scss/Bootstrap5/bootstrap.scss
+  #10.sourceMap = true
+  #10.outputStyle = expanded
+  #10.disableCompression = 1
+  #20 = EXT:rcdesign/Resources/Public/Scss/MyStyle/style.scss
+  20 = EXT:rcdesign/Resources/Public/css/style.css
+  30 = EXT:rcdesign/Resources/Public/Fonts/bootstrappackageicon.css
+}
+
+page.includeJSLibs {
+    #10 = EXT:rcdesign/Resources/Public/JavaScript/jQuery/jquery-3.6.1.min.js
+    #10.disableCompression = 1
+}
+
+#page.includeJS {
+#    30 = EXT:rcdesign/Resources/Public/JavaScript/script.js
+#}
+
+page.includeJSFooter {
+    10 = EXT:rcdesign/Resources/Public/JavaScript/popper.min.js
+    10.disableCompression = 1
+    20 = EXT:rcdesign/Resources/Public/JavaScript/bootstrap.min.js
+    20.disableCompression = 1
+    //30 = EXT:rcdesign/Resources/Public/JavaScript/repeat.js
+    40 = EXT:rcdesign/Resources/Public/JavaScript/fslightbox_v3.3.3.js
+    40.disableCompression = 1
+}
+
+### body css class hinzufügen
+// page.bodyTag >
+// page.bodyTagCObject = TEXT
+// page.bodyTagCObject.value= d-flex flex-column h-100
+// page.bodyTagCObject.wrap = <body class="|">
+
+page.10 = FLUIDTEMPLATE
+page.10 {
+  // paths {
+  //   100 = EXT:rcdesign/Resources/Private/Templates/
+    layoutRootPath = EXT:rcdesign/Resources/Private/Layouts
+    partialRootPath = EXT:rcdesign/Resources/Private/Partials
+    #file = EXT:rcdesign/Resources/Private/Templates/1column.html
+    file.stdWrap.cObject = CASE
+    file.stdWrap.cObject {
+      key.data = pagelayout
+
+      pagets__Startseite = TEXT
+      pagets__Startseite.value = EXT:rcdesign/Resources/Private/Templates/Startseite.html
+      // pagets__Startseite.value = EXT:rcdesign/Resources/Private/Templates/Pages/Startseite.html
+
+      pagets__Unterseite = TEXT
+      pagets__Unterseite.value = EXT:rcdesign/Resources/Private/Templates/Unterseite.html
+      // pagets__Unterseite.value = EXT:rcdesign/Resources/Private/Templates/Pages/Unterseite.html
+
+      default < .pagets__Unterseite
+    }
+  // }
+  variables {
+    content_0 < styles.content.get
+    // content_1 < styles.content.get
+    // content_1.select.where = colPos = 1
+    // content_2 < styles.content.get
+    // content_2.select.where = colPos = 2
+    // content_3 < styles.content.get
+    // content_3.select.where = colPos = 3
+    content_5 < styles.content.get
+    content_5 {
+      select.where = colPos=5
+      slide = -1
+    }
+    // mobilenav =< lib.menu
+    // navnormal =< lib.navi
+    // content_5 =< lib.slider
+  }
+  settings {
+    siteLogo = {$rcDesign.siteLogo}
+    siteTitle = {$rcDesign.siteTitle}
+    siteLogoRC = {$rcDesign.siteLogoRC}
+    rcUrl = {$rcDesign.rcUrl}
+    fbUrl = {$rcDesign.fbUrl}
+    fbImage = {$rcDesign.fbImage}
+    rootId = {$rcDesign.rootId}
+    metaNavId = {$rcDesign.metaNavId}
+  }
+
+  dataProcessing {
+    10 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+    10 {
+      as = mainMenu
+      expandAll = 1
+      titleField = nav_title // title
+      levels = 6
+    }
+    ## MetaNav
+    20 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+    20 {
+      as = metaNav
+      titleField = nav_title // title
+      levels = 2
+      special = directory
+      special.value = {$rcDesign.metaNavId}
+    }
+    ## Rootline
+    30 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+    30 {
+      as = rootline
+      special = rootline
+      special.range = 0|-1
+      titleField = nav_title // title
+      includeNotInMenu = 1
+    }
+  }
+  // dataProcessing {
+  //   10 = menu
+  //   10 {
+  //     as = mainMenu
+  //     expandAll = 1
+  //     titleField = nav_title // title
+  //     levels = 6
+  //   }
+  //   ## MetaNav
+  //   20 = menu
+  //   20 {
+  //     as = metaNav
+  //     titleField = nav_title // title
+  //     levels = 2
+  //     special = directory
+  //     special.value = {$rcDesign.metaNavId}
+  //   }
+  //   ## Rootline
+  //   30 = menu
+  //   30 {
+  //     as = rootline
+  //     special = rootline
+  //     special.range = 0|-1
+  //     titleField = nav_title // title
+  //     includeNotInMenu = 1
+  //   }
+  // }
+}
+
+# Scss dataProcessor ############################################################
+
+// tt_content.list.dataProcessing {
+//   10 = Rcdesign\Rcdesign\DataProcessing\ScssProcessor
+//   10 {
+//     source = Resources/Public/Resources/Public/Scss/main.scss
+//     target = Resources/Public/Resources/Public/Css/main.css
+//   }
+// }
+#################################################################################
+# Globale Einbindung Camera für id 12 Startseite
+#################################################################################
+/*
+[traverse(page, 'uid') == 12]
+#[page["uid"] == 18]
+  page.includeJSFooter {
+    80 = EXT:rcdesign/Resources/Public/JavaScript/camera.js
+    175 = EXT:rcdesign/Resources/Public/JavaScript/fireup_rc_camera.js
+  }
+  page.includeCSS {
+	  70 = EXT:rcdesign/Resources/Public/StyleSheeds/camera.css
+  }
+[END]
+*/
+#################################################################################
+# Globale Einbindung Google Maps für id 18
+#################################################################################
+/*
+[traverse(page, 'uid') == 18]
+    page.includeJS {
+    google = https://maps.googleapis.com/maps/api/js?key=Geheimschlüssel&language=de
+    google.disableCompression = 1
+    google.excludeFromConcatenation = 1
+    map = EXT:rcdesign/Resources/Public/JavaScript/map.js
+    map.disableCompression = 1
+    map.excludeFromConcatenation = 1
+    infobubble = EXT:rcdesign/Resources/Public/JavaScript/infobubble.js
+  }
+[END]
+*/
+
+#################################################################################
+## Matomo Analytics
+#################################################################################
+/*
+page.headerData.9999 = TEXT
+page.headerData.9999.value (
+    <!-- Matomo -->
+    <script data-name="matomo" data-type="text/javascript" type="text/plain">
+    var _paq = window._paq = window._paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//malerei-eberl.at/matomo/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '1']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+    </script>
+    <!-- End Matomo Code -->
+)
+*/
+
+
+page.headerData {
+  1639581221 = COA
+  1639581221 {
+    10 = COA
+    10 {
+      1 < lib.rcfavicon.imageRes
+      1.file = EXT:rcdesign/Resources/Public/Icons/favicon/favicon.svg
+      1.stdWrap.wrap = <link rel="icon" type="image/svg+xml" href="|">
+      1.stdWrap.append = 13
+      2 < lib.rcfavicon.imageRes
+      2.file = EXT:rcdesign/Resources/Public/Icons/favicon/favicon.png
+      2.stdWrap.wrap = <link rel="icon" type="image/png" href="|">
+    }
+  }
+  110 = HTML
+  110.value = <link rel="alternate" type="application/rss+xml" title="RSS-Feed" href="https://www.svgrepo.com/svg/25140/rss">
+}
+

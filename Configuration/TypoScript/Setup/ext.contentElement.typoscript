@@ -1,0 +1,29 @@
+lib.contentElement {
+  templateRootPaths.200 = EXT:rcdesign/Resources/Private/Templates/ContentElement/
+}
+
+tt_content {
+  rcdesign9_erstescustomelement =< lib.contentElement
+  rcdesign9_erstescustomelement {
+    templateName = FirstContentElement
+    dataProcessing {
+      10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+      10 {
+        as = images
+        references.fieldName = assets
+        references.table = tt_content
+        sorting = title
+        sorting.direction = descending
+      }
+      // 20 {
+      //   table = rccard_group_item
+      //   pidInList.field = pid
+      //   where {
+      //       data = field:uid
+      //       intval = 1
+      //       wrap = tt_content=|
+      //   }
+      // }
+    }
+  }
+}

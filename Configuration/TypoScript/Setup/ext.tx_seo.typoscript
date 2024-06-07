@@ -1,0 +1,37 @@
+plugin.tx_seo {
+    config {
+        xmlSitemap {
+            sitemaps {
+                pages {
+                    config {
+                        #excludedDoktypes = 9818, 500
+                        additionalWhere = AND no_index = 0
+                    }
+                }
+                news {
+                    provider = TYPO3\CMS\Seo\XmlSitemap\RecordsXmlSitemapDataProvider
+                    config {
+                        table = tx_news_domain_model_news
+                        sortField = sorting
+                        lastModifiedField = tstamp
+                        recursive = 1
+                        //Speicherort der Beiträge
+                        pid = 20
+                        url {
+                            //PageID der Detailseite
+                            pageId = 21
+                            fieldToParameterMap {
+                                uid = tx_news_pi1[news]
+                            }
+                            additionalGetParameters {
+                                tx_news_pi1.controller = News
+                                tx_news_pi1.action = detail
+                            }
+                            useCacheHash = 1
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

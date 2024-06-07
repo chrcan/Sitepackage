@@ -1,0 +1,119 @@
+plugin.tx_news {
+  view {
+    templateRootPaths >
+    templateRootPaths {
+        100 = EXT:rcdesign/Resources/Private/Extensions/news/Templates/
+        20 = {$plugin.tx_news.view.templateRootPath}
+    }
+    partialRootPaths >
+    partialRootPaths {
+        100 = EXT:rcdesign/Resources/Private/Extensions/news/Partials/
+        20 = {$plugin.tx_news.view.partialRootPath}
+    }
+    layoutRootPaths >
+    layoutRootPaths {
+        100 = EXT:rcdesign/Resources/Private/Extensions/news/Layouts/
+        20 = {$plugin.tx_news.view.layoutRootPath}
+    }
+  }
+
+  settings {
+    cropMaxCharacters = 150
+    displayDummyIfNoMedia = 1
+    //list.media.dummyImage = fileadmin/user_upload/familie1.jpg
+    //detail.errorHandling = redirectToPage,4
+
+    list {
+      /*
+      paginate {
+        itemsPerPage = 20
+      }
+      */
+        // media configuration
+        media {
+            dummyImage = EXT:rcdesign/Resources/Public/Images/rcdesign.png
+            //maxWidth = 250
+            //maxHeight = 140c
+            image {
+                maxWidth = 250c
+                maxHeight = 140c
+            }
+            video {
+                width = 500
+                height =
+            }
+        }
+    }
+    detail {
+        media {
+            image {
+                maxWidth =
+                maxHeight =
+            }
+        }
+    }
+  }
+
+  #settings.detail.media.video.width = 250
+
+  // rss.channel {
+  //   title = IFBB Austria ÖABFV RSS Feed
+  //   description = IFBB Austria ÖABFV Bodybuildingverband Österreich
+  //   link = {$rcDesign.rootId}
+  //   language = de-de
+  //   copyright = IFBB Austria ÖABFV
+  //   category =
+  //   generator = TYPO3 EXT:news
+  // }
+}
+config.recordLinks.tx_news {
+  typolink {
+    # Detail page
+    parameter = 21
+    additionalParams.data = field:uid
+    # If there is a plugin with mode "Detail", the controller and action parameter might be skipped
+    additionalParams.wrap = &tx_news_pi1[controller]=News&tx_news_pi1[action]=detail&tx_news_pi1[news]=|
+    useCacheHash = 1
+  }
+}
+/* NEWS RSS Feed */
+pageNewsRSS = PAGE
+pageNewsRSS {
+  typeNum = 9818
+  config {
+    disableAllHeaderCode = 1
+    xhtml_cleaning = none
+    admPanel = 0
+    debug = 0
+    disablePrefixComment = 1
+    metaCharset = utf-8
+    additionalHeaders.10.header = Content-Type:application/rss+xml;charset=utf-8
+    absRefPrefix = {$plugin.tx_news.rss.channel.link}
+    linkVars >
+  }
+  10 < tt_content.list.20.news_pi1
+  10 {
+    switchableControllerActions {
+      News {
+        1 = list
+      }
+    }
+    settings < plugin.tx_news.settings
+    settings {
+      #categories = 9
+      categoryConjunction = notor
+      limit = 30
+      detailPid = 21
+      startingpoint = 20
+      format = xml
+      list.rss.channel {
+        title = IFBB Austria ÖABFV RSS Feed
+        language = de
+        copyright = IFBB Austria ÖABFV
+        description = IFBB Austria ÖABFV Bodybuildingverband Österreich
+        generator = TYPO3
+        link = {$rcDesign.rootId}
+      }
+    }
+  }
+}
