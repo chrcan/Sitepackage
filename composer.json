@@ -4,7 +4,10 @@
 	"description": "Sitepackage for TYPO3 12",
 	"license": "GPL-2.0-or-later",
 	"require": {
-		"typo3/minimal": "^12.0"
+		"typo3/minimal": "^12.0",
+		"georgringer/news": "^11.4",
+		"b13/container": "^2.3",
+		"contentblocks/content-blocks": "^0.7"
 	},
 	"authors": [
 		{
