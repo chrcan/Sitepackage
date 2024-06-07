@@ -9,8 +9,7 @@ declare(strict_types=1);
  * _________________________________________________
  */
 
-if (!defined('TYPO3')) {
-    die('Access denied.');
-}
+defined('TYPO3') or die();
+
 TYPO3\CMS\Core\Utility\ExtensionManagementUtility::registerPageTSConfigFile('rcdesign', 'Configuration/TSconfig/BackendLayouts.tsconfig', 'Default Backendlayouts');
 TYPO3\CMS\Core\Utility\ExtensionManagementUtility::registerPageTSConfigFile('rcdesign', 'Configuration/TSconfig/Page.tsconfig', 'Default PageTSconfig');
