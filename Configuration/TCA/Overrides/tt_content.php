@@ -3,29 +3,17 @@
 declare(strict_types=1);
 
 /*
- * Copyright (C) 2023 rc design visual concepts (rc-design.at)
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
- *
+ * (c) 2024 rc design visual concepts (rc-design.at)
+ * _________________________________________________
  * The TYPO3 project - inspiring people to share!
+ * _________________________________________________
  */
 
 defined('TYPO3') or die();
 
-\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\B13\Container\Tca\Registry::class)->configureContainer(
+TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(B13\Container\Tca\Registry::class)->configureContainer(
     (
-        new \B13\Container\Tca\ContainerConfiguration(
+        new B13\Container\Tca\ContainerConfiguration(
             '2Spalten', // CType
             '2 Spalten', // label
             '50% / 50%', // description
@@ -44,9 +32,9 @@ defined('TYPO3') or die();
 // override default settings
 $GLOBALS['TCA']['tt_content']['types']['2colsU']['showitem'] = 'sys_language_uid,CType,header,header_layout,layout,colPos,tx_container_parent';
 
-\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\B13\Container\Tca\Registry::class)->configureContainer(
+TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(B13\Container\Tca\Registry::class)->configureContainer(
     (
-        new \B13\Container\Tca\ContainerConfiguration(
+        new B13\Container\Tca\ContainerConfiguration(
             '3Spalten', // CType
             '3 Spalten', // label
             '33% / 33% / 33%', // description
@@ -66,9 +54,9 @@ $GLOBALS['TCA']['tt_content']['types']['2colsU']['showitem'] = 'sys_language_uid
 // override default settings
 $GLOBALS['TCA']['tt_content']['types']['3cols']['showitem'] = 'sys_language_uid,CType,header,header_layout,layout,colPos,tx_container_parent';
 
-\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\B13\Container\Tca\Registry::class)->configureContainer(
+TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(B13\Container\Tca\Registry::class)->configureContainer(
     (
-        new \B13\Container\Tca\ContainerConfiguration(
+        new B13\Container\Tca\ContainerConfiguration(
             '4Spalten', // CType
             '4 Spalten', // label
             '33% / 33% / 33% / 33%', // description
@@ -92,7 +80,7 @@ $GLOBALS['TCA']['tt_content']['types']['4cols']['showitem'] = 'sys_language_uid,
 // Eigenes CType erstellen
 
 // Adds the content element to the "Type" dropdown
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTcaSelectItem(
+TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTcaSelectItem(
     'tt_content',
     'CType',
     [
@@ -142,7 +130,7 @@ $GLOBALS['TCA']['tt_content']['types']['rcdesign9_erstescustomelement'] = [
     ],
 ];
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns(
+TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns(
     'tt_content',
     [
         'row_items' => [
@@ -174,7 +162,7 @@ $GLOBALS['TCA']['tt_content']['types']['rcdesign9_erstescustomelement'] = [
 
 /// Neues CE Element Card mit Inline Funktion
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTcaSelectItem(
+TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTcaSelectItem(
     'tt_content',
     'CType',
     [
@@ -266,7 +254,7 @@ $GLOBALS['TCA']['tt_content']['columns'] = array_replace_recursive(
 
 /// Neues CE Element Accordion mit Inline Funktion
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTcaSelectItem(
+TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTcaSelectItem(
     'tt_content',
     'CType',
     [

@@ -2,6 +2,13 @@
 
 declare(strict_types=1);
 
+/*
+ * (c) 2024 rc design visual concepts (rc-design.at)
+ * _________________________________________________
+ * The TYPO3 project - inspiring people to share!
+ * _________________________________________________
+ */
+
 namespace Rcdesign\Rcdesign\ViewHelpers;
 
 use InvalidArgumentException;
@@ -61,6 +68,7 @@ final class ImageViewHelper extends AbstractTagBasedViewHelper
      * Resizes a given image (if required) and renders the respective img tag.
      *
      * @see https://docs.typo3.org/typo3cms/TyposcriptReference/ContentObjects/Image/
+     *
      * @throws Exception
      */
     public function render(): string
@@ -120,7 +128,7 @@ final class ImageViewHelper extends AbstractTagBasedViewHelper
                     10 => 'TEXT',
                     '10.' => [
                         'offset' => '20,30',
-                        #'align' => 'left',
+                        //'align' => 'left',
                         'fontFile' => 'EXT:rcdesign/Resources/Public/Fonts/roboto/Roboto-Bold.ttf',
                         'text' => '©IFBBAustria.at',
                         'fontSize' => '14',
@@ -129,7 +137,7 @@ final class ImageViewHelper extends AbstractTagBasedViewHelper
                     ],
                     20 => 'EFFECT',
                     '20.' => [
-                        'value' => $gifBuilderEffect
+                        'value' => $gifBuilderEffect,
                     ],
                 ];
                 $conf['XY'] = '[1.w],[1.h]';
@@ -167,10 +175,10 @@ final class ImageViewHelper extends AbstractTagBasedViewHelper
         } catch (ResourceDoesNotExistException $e) {
             // thrown if file does not exist
             throw new Exception($this->getExceptionMessage($e->getMessage()), 1509741911, $e);
-        } catch (\UnexpectedValueException $e) {
+        } catch (UnexpectedValueException $e) {
             // thrown if a file has been replaced with a folder
             throw new Exception($this->getExceptionMessage($e->getMessage()), 1509741912, $e);
-        } catch (\InvalidArgumentException $e) {
+        } catch (InvalidArgumentException $e) {
             // thrown if file storage does not exist
             throw new Exception($this->getExceptionMessage($e->getMessage()), 1509741914, $e);
         }

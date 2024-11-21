@@ -1,22 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 /*
- * Copyright (C) 2023 rc design visual concepts (rc-design.at)
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
- *
+ * (c) 2024 rc design visual concepts (rc-design.at)
+ * _________________________________________________
  * The TYPO3 project - inspiring people to share!
+ * _________________________________________________
  */
 
 namespace Rcdesign\Rcdesign\ViewHelpers;
@@ -25,7 +15,7 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper;
 
 /**
  * Phone link view helper.
- * Generates a phone link
+ * Generates a phone link.
  *
  * = Examples
  *
@@ -51,7 +41,7 @@ class PhoneViewHelper extends AbstractTagBasedViewHelper
     protected $tagName = 'a';
 
     /**
-     * Arguments initialization
+     * Arguments initialization.
      */
     /*
    public function initializeArguments()
@@ -74,7 +64,8 @@ class PhoneViewHelper extends AbstractTagBasedViewHelper
     }
 
     /**
-     * @param string $phone The phone number to be turned into a link.
+     * @param string $phone the phone number to be turned into a link
+     *
      * @return string Rendered phone link
      */
     public function render()

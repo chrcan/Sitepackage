@@ -1,51 +1,41 @@
 {
-	"name": "rcdesign/rcdesign",
-	"type": "typo3-cms-extension",
-	"description": "Sitepackage for TYPO3 12",
-	"license": "GPL-2.0-or-later",
-	"require": {
-		"typo3/minimal": "^12.0",
-		"georgringer/news": "^11.4",
-		"b13/container": "^2.3",
-		"contentblocks/content-blocks": "^0.7"
-	},
-	"authors": [
-		{
-			"name": "Christian Racan",
-			"role": "Developer"
-		}
-	],
-	"keywords": [
-		"TYPO3 CMS",
-		"Rcdesign"
-	],
-	"support": {
-		"issues": "https://github.com/vendorname/my-extensions/issues"
-	},
-	"funding": [
-		{
-			"type": "other",
-			"url:": "myfundpage.org/vendorname"
-		}
-	],
-	"homepage": "https://typo3.org",
-	"require-dev": {
-		"roave/security-advisories": "dev-latest",
-		"typo3/cms-belog": "^12.0",
-		"typo3/cms-lowlevel": "^12.0",
-		"typo3/cms-scheduler": "^12.0",
-		"typo3/cms-setup": "^12.0"
-	},
-	"extra": {
-		"typo3/cms": {
-			"extension-key": "rcdesign"
-		}
-	},
-	"autoload": {
-		"psr-4": {
-			"Rcdesign\\Rcdesign\\": "Classes"
-		}
-	},
-	"minimum-stability": "dev",
-	"prefer-stable": true
+  "name": "rcdesign/rcdesign",
+  "description": "Sitepackage for TYPO3 12",
+  "license": "GPL-2.0-or-later",
+  "type": "typo3-cms-extension",
+  "keywords": [
+    "TYPO3 CMS",
+    "Rcdesign"
+  ],
+  "authors": [
+    {
+      "name": "Christian Racan",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "b13/container": "^3.1",
+    "friendsoftypo3/content-blocks": "^0.7",
+    "georgringer/news": "^12.1",
+    "typo3/minimal": "^12.0"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-latest",
+    "typo3/cms-belog": "^12.0",
+    "typo3/cms-lowlevel": "^12.0",
+    "typo3/cms-scheduler": "^12.0",
+    "typo3/cms-setup": "^12.0"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "autoload": {
+    "psr-4": {
+      "Rcdesign\\Rcdesign\\": "Classes"
+    }
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "rcdesign"
+    }
+  }
 }
