@@ -1,12 +1,8 @@
 {
   "name": "rcdesign/rcdesign",
-  "description": "Sitepackage for TYPO3 12",
-  "license": "GPL-2.0-or-later",
+  "description": "Sitepackage rc design visual concepts",
+  "license": "GPL-3.0-or-later",
   "type": "typo3-cms-extension",
-  "keywords": [
-    "TYPO3 CMS",
-    "Rcdesign"
-  ],
   "authors": [
     {
       "name": "Christian Racan",
@@ -14,23 +10,23 @@
     }
   ],
   "require": {
-    "b13/container": "^3.1",
-    "friendsoftypo3/content-blocks": "^0.7",
-    "georgringer/news": "^12.1",
-    "typo3/minimal": "^12.0"
+    "typo3/cms-core": "^12.1"
   },
-  "require-dev": {
-    "roave/security-advisories": "dev-latest",
-    "typo3/cms-belog": "^12.0",
-    "typo3/cms-lowlevel": "^12.0",
-    "typo3/cms-scheduler": "^12.0",
-    "typo3/cms-setup": "^12.0"
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true,
   "autoload": {
     "psr-4": {
       "Rcdesign\\Rcdesign\\": "Classes"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Rcdesign\\Rcdesign\\Tests\\": "Tests"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "ergebnis/composer-normalize": true,
+      "typo3/class-alias-loader": true,
+      "typo3/cms-composer-installers": true
     }
   },
   "extra": {

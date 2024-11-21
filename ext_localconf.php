@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * (c) 2024 rc design visual concepts (rc-design.at)
+ * (c) 2025 rc design visual concepts (rc-design.at)
  * _________________________________________________
  * The TYPO3 project - inspiring people to share!
  * _________________________________________________
@@ -12,4 +12,3 @@ declare(strict_types=1);
 defined('TYPO3') or die();
 
 $GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['BootstrapRTE'] = 'EXT:rcdesign/Configuration/RTE/BootstrapRTE.yaml';
-
